@@ -105,7 +105,7 @@ const AntdConfig: ThemeConfig = {
       trackBg: "rgb(236, 33, 39)",
       railBg: "rgb(255, 255, 255)",
       railHoverBg: "rgb(255, 255, 255)",
-      colorBgElevated: "rgb(25,135,84)",
+      colorBgElevated: "rgb(17, 210, 249)",
       handleColor: "rgb(255, 255, 255)",
       handleActiveColor: "rgb(255, 255, 255)",
       trackHoverBg: "rgb(236, 33, 39)",

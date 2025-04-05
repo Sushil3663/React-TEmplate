@@ -1,76 +1,38 @@
 import React, { useState } from "react";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
-import { Footer } from "antd/es/layout/layout";
 
-const { Header, Sider, Content } = Layout;
+import { Layout } from "antd";
+import { COLORS } from "../constants/style/colors";
+import Header from "./header";
+import Sidebar from "./sidebar";
+import TemplateFooter from "./footer";
+import { ProtectedRouterWrapper } from "../constants/style/common.styled";
+import RoutesContainer from "../routes/routesContainer";
+
+const { Content } = Layout;
 
 const Template: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
 
   return (
     <>
       <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div />
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            items={[
-              {
-                key: "1",
-                icon: <UserOutlined />,
-                label: "nav 1",
-              },
-              {
-                key: "2",
-                icon: <VideoCameraOutlined />,
-                label: "nav 2",
-              },
-              {
-                key: "3",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-            ]}
-          />
-        </Sider>
+        <Sidebar collapsed={collapsed} />
+
         <Layout>
-          <Header style={{ padding: 0, background: colorBgContainer }}>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
-              }}
-            />
-          </Header>
+          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+
           <Content
             style={{
               padding: 24,
-              minHeight: "calc(-64px + 100vh)",
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+              minHeight: "calc(-130px + 100vh)",
+              background: COLORS.backgroundColor,
             }}
           >
-            Content
+            <ProtectedRouterWrapper>
+              <RoutesContainer />
+            </ProtectedRouterWrapper>
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Layout ©{new Date().getFullYear()} Created by Sushil
-          </Footer>
+          <TemplateFooter />
         </Layout>
       </Layout>
     </>
