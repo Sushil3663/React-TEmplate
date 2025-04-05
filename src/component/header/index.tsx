@@ -42,7 +42,6 @@ const Header = ({ collapsed, setCollapsed }: IHeaderProps) => {
       label: (
         <Flex>
           <KeyOutlined style={{ marginRight: "8px" }} />
-
           <Text>Change Password</Text>
         </Flex>
       ),
