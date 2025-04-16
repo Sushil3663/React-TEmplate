@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   KeyOutlined,
   LogoutOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  // MenuFoldOutlined,
+  // MenuUnfoldOutlined,
   UserSwitchOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, Flex, Layout, MenuProps, Typography } from "antd";
+import { Dropdown, Flex, Layout, MenuProps, Typography } from "antd";
 
 import { useEffect, useState } from "react";
 import { COLORS } from "../../constants/style/colors";
@@ -21,7 +22,7 @@ const { Header: AntHeader } = Layout;
 
 const Header = ({ collapsed, setCollapsed }: IHeaderProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
-
+  console.log(collapsed, setCollapsed);
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth < 756);
@@ -71,10 +72,12 @@ const Header = ({ collapsed, setCollapsed }: IHeaderProps) => {
         top: 0,
         zIndex: 1,
         width: "100%",
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
       }}
     >
-      <Flex justify="space-between" align="center" wrap="nowrap">
-        <Button
+      {/* <Button
           type="text"
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           onClick={() => setCollapsed(!collapsed)}
@@ -83,31 +86,26 @@ const Header = ({ collapsed, setCollapsed }: IHeaderProps) => {
             width: 64,
             height: 64,
           }}
-        />
-        <Flex justify="flex-end" align="center" gap={10}>
-          {!isMobileView && (
-            <Title level={5} style={{ margin: 0 }}>
-              Welcome, Sushil
-            </Title>
-          )}
+        /> */}
+      <Flex justify="space-between" align="center" gap={15}>
+        {!isMobileView && <Title level={5}>Welcome, Sushil</Title>}
 
-          <Dropdown
-            menu={{
-              items,
+        <Dropdown
+          menu={{
+            items,
+          }}
+          placement="bottomRight"
+          arrow={{ pointAtCenter: true }}
+        >
+          <UserSwitchOutlined
+            style={{
+              cursor: "pointer",
+              fontSize: 18,
+              marginRight: "1.5rem",
+              marginLeft: "0.5rem",
             }}
-            placement="bottomRight"
-            arrow={{ pointAtCenter: true }}
-          >
-            <UserSwitchOutlined
-              style={{
-                cursor: "pointer",
-                fontSize: 18,
-                marginRight: "1.5rem",
-                marginLeft: "0.5rem",
-              }}
-            />
-          </Dropdown>
-        </Flex>
+          />
+        </Dropdown>
       </Flex>
     </AntHeader>
   );

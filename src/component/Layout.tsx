@@ -4,7 +4,6 @@ import { Layout } from "antd";
 import { COLORS } from "../constants/style/colors";
 import Header from "./header";
 import Sidebar from "./sidebar";
-import TemplateFooter from "./footer";
 import { ProtectedRouterWrapper } from "../constants/style/common.styled";
 import RoutesContainer from "../routes/routesContainer";
 
@@ -16,10 +15,10 @@ const Template: React.FC = () => {
   return (
     <>
       <Layout>
-        <Sidebar collapsed={collapsed} />
+        <Header collapsed={collapsed} setCollapsed={setCollapsed} />
 
         <Layout>
-          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+          <Sidebar collapsed={collapsed} />
 
           <Content
             style={{
@@ -32,8 +31,8 @@ const Template: React.FC = () => {
               <RoutesContainer />
             </ProtectedRouterWrapper>
           </Content>
-          <TemplateFooter />
         </Layout>
+        {/* <TemplateFooter /> */}
       </Layout>
     </>
   );

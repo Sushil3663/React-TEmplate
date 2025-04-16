@@ -30,4 +30,11 @@ export const RouteList = [
       },
     ],
   },
+  {
+    path: "/card-service",
+    component: lazy(() => import("../pages/dashboard/index")),
+    exact: true,
+    pathname: "Dashboard",
+    icon: UploadOutlined,
+  },
 ];

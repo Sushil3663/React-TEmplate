@@ -72,10 +72,12 @@ const Sidebar = ({ collapsed }: IProps) => {
         collapsed={collapsed}
         width={250}
         style={{
-          background: COLORS.primary,
+          background: COLORS.White,
           minWidth: 80,
           overflow: "auto",
-          height: "100vh",
+          height: "60vh",
+          marginTop: "12rem",
+          marginLeft: "2rem",
         }}
       >
         <Logo
@@ -92,9 +94,9 @@ const Sidebar = ({ collapsed }: IProps) => {
         </Logo>
 
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
-          style={{ background: COLORS.primary }}
+          style={{ background: COLORS.White }}
           selectedKeys={[selectedKey || ""]}
           defaultOpenKeys={[openKey || ""]}
           onClick={({ key }) => navigate(key)}
